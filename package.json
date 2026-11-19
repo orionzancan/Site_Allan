@@ -1,0 +1,16 @@
+{
+  "name": "concretando-materiais-construcao",
+  "version": "1.0.0",
+  "description": "CONCRETANDO - Loja de Materiais de Construção com Cotação por m², Retirada na Loja, Banco de Dados Local + Supabase e APIs Vercel",
+  "private": true,
+  "scripts": {
+    "dev": "vercel dev",
+    "start": "npx serve ."
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
