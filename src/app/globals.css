@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-primary: #cf141b;
+  --brand-primary-dark: #960d12;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #09090b;
+  color: #f6f6f7;
+  overflow-x: hidden;
+  background-image:
+    radial-gradient(circle at 12% 16%, rgba(207, 20, 27, 0.14) 0%, transparent 42%),
+    radial-gradient(circle at 88% 74%, rgba(207, 20, 27, 0.11) 0%, transparent 45%),
+    linear-gradient(rgba(207, 20, 27, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(207, 20, 27, 0.04) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 64px 32px, 64px 32px;
+}
+
+@layer components {
+  .btn-brand {
+    background: linear-gradient(135deg, var(--brand-primary), var(--brand-primary-dark));
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold text-white shadow-lg transition hover:brightness-110 active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-outline-dark {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-white/15 bg-white/[0.03] px-4 py-2.5 text-sm font-semibold text-zinc-100 transition hover:border-brand hover:bg-brand/15;
+  }
+
+  .input-dark {
+    @apply w-full rounded-lg border border-white/15 bg-[#0e0e12] px-3.5 py-2.5 text-sm text-zinc-100 placeholder:text-zinc-500 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/25;
+  }
+
+  .card-surface {
+    @apply rounded-2xl border border-white/10 bg-[#14141a]/95 shadow-xl;
+  }
+}
+
+/* Espaço extra no mobile para não ficar coberto pela barra inferior fixa */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: 72px;
+  }
+}
