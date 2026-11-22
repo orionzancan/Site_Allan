@@ -1,27 +1,7 @@
 import type { Metadata, Viewport } from 'next';
-import { Oswald, Playfair_Display, Plus_Jakarta_Sans } from 'next/font/google';
 import { getSettings } from '@/lib/db/repository';
-import { darkenHex } from '@/lib/format';
+import { darkenHex, hexToRgbChannels } from '@/lib/format';
 import './globals.css';
-
-const oswald = Oswald({
-  subsets: ['latin'],
-  weight: ['600', '700'],
-  variable: '--font-oswald'
-});
-
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  weight: ['600'],
-  style: ['normal', 'italic'],
-  variable: '--font-playfair'
-});
-
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
-  variable: '--font-jakarta'
-});
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -45,18 +25,29 @@ export default async function RootLayout({
   const settings = await getSettings();
   const primary = settings.primary_color || '#cf141b';
   const primaryDark = darkenHex(primary, 36);
+  const primaryRgb = hexToRgbChannels(primary);
+  const primaryDarkRgb = hexToRgbChannels(primaryDark);
 
   return (
     <html
       lang="pt-BR"
-      className={`${oswald.variable} ${playfair.variable} ${jakarta.variable}`}
       style={
         {
           '--brand-primary': primary,
-          '--brand-primary-dark': primaryDark
+          '--brand-primary-dark': primaryDark,
+          '--brand-primary-rgb': primaryRgb,
+          '--brand-primary-dark-rgb': primaryDarkRgb
         } as React.CSSProperties
       }
     >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Playfair+Display:ital,wght@0,600;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className="font-sans antialiased selection:bg-brand selection:text-white">
         {children}
       </body>

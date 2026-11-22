@@ -5,6 +5,11 @@
 :root {
   --brand-primary: #cf141b;
   --brand-primary-dark: #960d12;
+  --brand-primary-rgb: 207 20 27;
+  --brand-primary-dark-rgb: 150 13 18;
+  --font-oswald: 'Oswald', 'Impact', sans-serif;
+  --font-playfair: 'Playfair Display', Georgia, serif;
+  --font-jakarta: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
 }
 
 html {

@@ -17,8 +17,8 @@ const config: Config = {
           700: '#1f1f27'
         },
         brand: {
-          DEFAULT: 'var(--brand-primary)',
-          dark: 'var(--brand-primary-dark)'
+          DEFAULT: 'rgb(var(--brand-primary-rgb) / <alpha-value>)',
+          dark: 'rgb(var(--brand-primary-dark-rgb) / <alpha-value>)'
         }
       },
       fontFamily: {

@@ -82,3 +82,13 @@ export function darkenHex(hex: string, amount = 32): string {
   const b = Math.max(0, (num & 0xff) - amount);
   return `#${((1 << 24) | (r << 16) | (g << 8) | b).toString(16).slice(1)}`;
 }
+
+export function hexToRgbChannels(hex: string): string {
+  const clean = hex.replace('#', '');
+  if (clean.length !== 6) return '207 20 27';
+  const num = parseInt(clean, 16);
+  const r = (num >> 16) & 0xff;
+  const g = (num >> 8) & 0xff;
+  const b = num & 0xff;
+  return `${r} ${g} ${b}`;
+}
